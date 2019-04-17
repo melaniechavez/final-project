@@ -48,7 +48,7 @@ class RentalCar
     void dequeue();
 
     // return: groupID of the group at the front of the priority queue
-    GroupNode peek();
+    LLRentalCar peek();
 
     void printL();
 
