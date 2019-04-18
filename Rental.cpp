@@ -174,3 +174,10 @@ void RentalCar::repairDownward(int nodeIndex)
   }
 }
 
+void RentalCar::printL() {
+  Node* temp = head;
+
+  while(temp->next != NULL) {
+    cout<< temp->make << "," << temp->year << "," << temp->color << "," << temp->dropoff << "," << temp->price <<endl;
+  }
+}
