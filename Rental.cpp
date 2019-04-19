@@ -19,53 +19,53 @@ void Lcar::insertCar(LLRentalCar* previous, std::string Nmake, std::string color
     cout <<"adding: "<< Nmake << " (prev: " <<previous -> make << ")" << endl;
   }
   LLRentalCar* newColor = new LLRentalCar;
-  newColor->color = Ncolor;
+  newColor->color = color;
   if (previous == NULL){
     newColor->next = head;
     head = newColor;
-    cout <<"adding: " << Ncolor << " (HEAD)" <<endl;
+    cout <<"adding: " << color << " (HEAD)" <<endl;
   }
   else {
     newColor->next = previous->next;
     previous->next = newColor;
-    cout <<"adding: "<< Ncolor << " (prev: " <<previous -> color << ")" << endl;
+    cout <<"adding: "<< color << " (prev: " << previous->color << ")" << endl;
 }
 LLRentalCar* newDropoff = new LLRentalCar;
-newDropoff->dropoff = Ndropoff;
+newDropoff->dropoff = dropoff;
 if (previous == NULL){
   newDropoff->next = head;
   head = newDropoff;
-  cout <<"adding: " << Ndropoff << " (HEAD)" <<endl;
+  cout <<"adding: " << dropoff << " (HEAD)" <<endl;
 }
 else {
   newDropoff->next = previous->next;
   previous->next = newDropoff;
-  cout <<"adding: "<< Ndropoff<< " (prev: " <<previous -> dropoff << ")" << endl
+  cout <<"adding: "<< dropoff<< " (prev: " << previous->dropoff << ")" << endl
 }
 LLRentalCar* newPrice = new LLRentalCar;
-newPrice->price = Nprice;
+newPrice->price = price;
 if (previous == NULL){
   newPrice->next = head;
   head = newPrice;
-  cout <<"adding: " << Nprice << " (HEAD)" <<endl;
+  cout <<"adding: " << price << " (HEAD)" <<endl;
 }
 else {
   newPricef->next = previous->next;
   previous->next = newPrice;
-  cout <<"adding: "<< Nprice << " (prev: " <<previous -> price << ")" << endl
+  cout << "adding: " << price << " (prev: " << previous->price << ")" << endl
 }
 
 LLRentalCar* newYear = new LLRentalCar;
-newYear->year = Nyear;
+newYear->year = year;
 if (previous == NULL){
   newYear->next = head;
   head = newYear;
-  cout <<"adding: " << Nyear << " (HEAD)" <<endl;
+  cout <<"adding: " << year << " (HEAD)" <<endl;
 }
 else {
   newYear->next = previous->next;
   previous->next = newYear;
-  cout <<"adding: "<< Nyear << " (prev: " <<previous -> year << ")" << endl;
+  cout <<"adding: "<< year << " (prev: " << previous->year << ")" << endl;
   }
 }
 
