@@ -10,7 +10,6 @@ int read(int argc, char* argv[]) {
   string filename = argv[1];
   string response;
   string make;
-  string model;
   string year;
   string price;
   string color;
@@ -28,12 +27,11 @@ int read(int argc, char* argv[]) {
       stringsteam s;
       s<<response;
       getline(s, make, ',');
-      getline(s, model, ',');
       getline(s, year, ',');
-      getline(s, price, ',');
       getline(s, color, ',');
       getline(s, way, ',');
-      l.addCar(make, model, stoi(year), stof(price), color, stoi(way))
+      getline(s, price);
+      l.insertCar(make, color, stoi(way), stof(price), stoi(year));
     }
   }
   return 0;
