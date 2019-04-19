@@ -1,0 +1,9 @@
+Honda Civic,2018,Green,one-way,68.13
+Nissan Maxima,2017,Red,two-way,75.20
+Toyota Camry,2019,Silver,one-way,93.75
+Dodge Charger,2018,Black,two-way,110.50
+Subaru Impreza,2017,Blue,one-way,72.14
+Mitsubishi Mirage,2018,Silver,two-way,55.35
+Dodge Challenger,2017,Green,two-way,108.97
+Hyundai Elantra,2018,Tan,one-way,65.32
+Chevrolet Camaro,2019,Yellow,two-way,112.75
