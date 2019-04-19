@@ -18,6 +18,55 @@ void Lcar::insertCar(LLRentalCar* previous, std::string Nmake, std::string color
     previous->next = newCar;
     cout <<"adding: "<< Nmake << " (prev: " <<previous -> make << ")" << endl;
   }
+  LLRentalCar* newColor = new LLRentalCar;
+  newColor->color = Ncolor;
+  if (previous == NULL){
+    newColor->next = head;
+    head = newColor;
+    cout <<"adding: " << Ncolor << " (HEAD)" <<endl;
+  }
+  else {
+    newColor->next = previous->next;
+    previous->next = newColor;
+    cout <<"adding: "<< Ncolor << " (prev: " <<previous -> color << ")" << endl;
+}
+LLRentalCar* newDropoff = new LLRentalCar;
+newDropoff->dropoff = Ndropoff;
+if (previous == NULL){
+  newDropoff->next = head;
+  head = newDropoff;
+  cout <<"adding: " << Ndropoff << " (HEAD)" <<endl;
+}
+else {
+  newDropoff->next = previous->next;
+  previous->next = newDropoff;
+  cout <<"adding: "<< Ndropoff<< " (prev: " <<previous -> dropoff << ")" << endl
+}
+LLRentalCar* newPrice = new LLRentalCar;
+newPrice->price = Nprice;
+if (previous == NULL){
+  newPrice->next = head;
+  head = newPrice;
+  cout <<"adding: " << Nprice << " (HEAD)" <<endl;
+}
+else {
+  newPricef->next = previous->next;
+  previous->next = newPrice;
+  cout <<"adding: "<< Nprice << " (prev: " <<previous -> price << ")" << endl
+}
+
+LLRentalCar* newYear = new LLRentalCar;
+newYear->year = Nyear;
+if (previous == NULL){
+  newYear->next = head;
+  head = newYear;
+  cout <<"adding: " << Nyear << " (HEAD)" <<endl;
+}
+else {
+  newYear->next = previous->next;
+  previous->next = newYear;
+  cout <<"adding: "<< Nyear << " (prev: " <<previous -> year << ")" << endl;
+  }
 }
 
 LLRentalCar Lcar::* searchCar(std::string Nmake)
