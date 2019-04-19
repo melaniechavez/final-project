@@ -23,9 +23,9 @@ class LCar
     LLRentalCar* head;  // Pointer to the head.
 
   public:
-    void insertCar(std::string make, std::string color, std::string dropoff, float price, int year);
+    void insertCar(std::string Nmake, std::string Ncolor, std::string Ndropoff, float Nprice, int Nyear);
 
-    LLRentalCar* searchCar(std::string make);
+    LLRentalCar* searchCar(std::string Nmake);
     // Searches for the car if it's in the linked list.
 
     weighting_function(LLRentalCar* node);
