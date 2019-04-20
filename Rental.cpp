@@ -60,89 +60,233 @@ void CarList::printList()
 
 void CarList::weighting_function(){
 
-  cout << "Is a certain make desired? (Enter Y/N):" << endl;//<< endl;
+  int option = 0;
+  int state = 1;
+  int redo = 0;
   string make_yn;
-  cout << "#> ";
-  getline(cin,make_yn);
-  cout << "make_yn: " << make_yn << endl;
-
   string make_importance = "1";
   string make;
-  if(make_yn == "Y"){
-    cout << "Enter the make: (E.g. Toyota)" << endl;//<< endl;
-    cout << "#> ";
-    getline(cin,make);
-    cout << "make: "  << make << endl;
-    cout << "Rank the importance of make from 0 to 5, with 5 being most important:" << endl;//<< endl;
-    cout << "#> ";
-    getline(cin,make_importance);
-    cout << "make_importance: " << make_importance << endl;
-  }
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  cout << "Is a certain color desired? (Enter Y/N):" << endl;//<< endl;
   string color_yn;
-  cout << "#> ";
-  //cin.ignore();
-  getline(cin,color_yn);
-  cout << "color_yn: " << color_yn << endl;
   string color_importance = "1";
   string color;
-  if(color_yn == "Y"){
-    cout << "List the desired color of the car: (E.g. Green)" << endl;//<< endl;
-    cout << "#> ";
-    getline(cin,color);
-    cout << "color: " << color << endl;
-    cout << "Rank the importance of color from 0 to 5, with 5 being most important:" << endl;//<< endl;
-    cout << "#> ";
-    getline(cin,color_importance);
-    cout << "color_importance: " << color_importance << endl;
-  }
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  cout << "Is the price a determining factor? (Enter Y/N):" << endl;//<< endl;
   string price_yn;
-  cout << "#> ";
-  getline(cin,price_yn);
-  cout << "price_yn: " << price_yn << endl;
-
   string price_importance = "1";
   string price;
-  if(price_yn == "Y"){
-    cout << "List the desired price of the car:" << endl;//<< endl;
-    cout << "#> ";
-    getline(cin,price);
-    cout << "price: " << price << endl;
-    cout << "Rank the importance of price from 0 to 5, with 5 being most important:" << endl;//<< endl;
-    cout << "#> ";
-    getline(cin,price_importance);
-    cout << "price_importance: " << price_importance << endl;
-  }
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  cout << "Is a certain year desired? (Enter Y/N):" << endl;//<< endl;
   string year_yn;
-  cout << "#> ";
-  getline(cin,year_yn);
-  cout << "year_yn: " << year_yn << endl;
-
   string year_importance = "1";
   string year;
-  if(year_yn == "Y"){
-    cout << "List the desired year of the car:" << endl;//<< endl;
-    cout << "#> ";
-    getline(cin,year);
-    cout << "year: " << year << endl;
-    cout << "Rank the importance of year from 0 to 5, with 5 being most important:" << endl;//<< endl;
-    cout << "#> ";
-    getline(cin,year_importance);
-    cout << "year_importance: " << year_importance << endl;
-  }
-  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  cout << "Is it necessary for the rental to be two_way? (Enter Y/N):" << endl;//<< endl;
   string two_way_yn;
-  cout << "#> ";
-  getline(cin,two_way_yn);
-  cout << "two_way_yn: " << two_way_yn << endl;
+  string state_sel;
 
+  while(option == 0){
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    if(state == 1 && option == 0){
+      cout << "Is a certain make desired? (Enter Y/N):" << endl;//<< endl;
+      cout << "#> ";
+      cin >> make_yn;
+      while(make_yn != "Y" && make_yn != "N"){
+        cout << "Is a certain make desired? Please enter Y or N as capital letters:" << endl;//<< endl;
+        cout << "#> ";
+        cin >> make_yn;
+      }
+
+      if(make_yn == "Y"){
+        cout << "Enter the make and model: (E.g. Toyota Camry)" << endl;//<< endl;
+        cout << "#> ";
+        cin.ignore();
+        getline(cin,make);
+        //cout << "make: "  << make << endl;
+        cout << "Rank the importance of make from 0 to 5, with 5 being most important:" << endl;//<< endl;
+        cout << "#> ";
+        cin >> make_importance;
+        while(make_importance != "0" && make_importance !="1" && make_importance !="2" && make_importance !="3" && make_importance !="4"&& make_importance !="5"){
+          cout << "Please enter the importance as a number between 0 and 5:" << endl;//<< endl;
+          cout << "#> ";
+          cin >> make_importance;
+        }
+      }
+      if(redo == 0){
+        state = 2;
+      }
+      else{
+        option = 1;
+      }
+    }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    if(state == 2 && option == 0){
+      cout << "Is a certain color desired? (Enter Y/N):" << endl;//<< endl;
+      cout << "#> ";
+      cin >> color_yn;
+      while(color_yn != "Y" && color_yn != "N"){
+        cout << "Is a certain color desired? Please enter Y or N as capital letters:" << endl;//<< endl;
+        cout << "#> ";
+        cin >> color_yn;
+      }
+      //cout << "color_yn: " << color_yn << endl;
+      if(color_yn == "Y"){
+        cout << "List the desired color of the car: (E.g. Green)" << endl;//<< endl;
+        cout << "#> ";
+        cin >> color;
+        //cout << "color: " << color << endl;
+        cout << "Rank the importance of color from 0 to 5, with 5 being most important:" << endl;//<< endl;
+        cout << "#> ";
+        cin >> color_importance;
+        while(color_importance != "0" && color_importance !="1" && color_importance !="2" && color_importance !="3" && color_importance !="4"&& color_importance !="5"){
+          cout << "Please enter the importance as a number between 0 and 5:" << endl;//<< endl;
+          cout << "#> ";
+          cin >> color_importance;
+        }
+        //cout << "color_importance: " << color_importance << endl;
+      }
+      if(redo == 0){
+        state = 3;
+      }
+      else{
+        option = 1;
+      }
+    }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    if(state == 3 && option == 0){
+      cout << "Is the price a determining factor? (Enter Y/N):" << endl;//<< endl;
+      cout << "#> ";
+      cin >> price_yn;
+      while(price_yn != "Y" && price_yn != "N"){
+        cout << "Is a certain color desired? Please enter Y or N as capital letters:" << endl;//<< endl;
+        cout << "#> ";
+        cin >> price_yn;
+      }
+      //cout << "price_yn: " << price_yn << endl;
+      if(price_yn == "Y"){
+        cout << "List the desired price of the car:" << endl;//<< endl;
+        cout << "#> ";
+        cin >> price;
+        //cout << "price: " << price << endl;
+        cout << "Rank the importance of price from 0 to 5, with 5 being most important:" << endl;//<< endl;
+        cout << "#> ";
+        cin >> price_importance;
+        while(price_importance != "0" && price_importance !="1" && price_importance !="2" && price_importance !="3" && price_importance !="4"&& price_importance !="5"){
+          cout << "Please enter the importance as a number between 0 and 5:" << endl;//<< endl;
+          cout << "#> ";
+          cin >> price_importance;
+        }
+        //cout << "price_importance: " << price_importance << endl;
+      }
+      if(redo == 0){
+        state = 4;
+      }
+      else{
+        option = 1;
+      }
+    }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    if(state == 4 && option == 0){
+      cout << "Is a certain year desired? (Enter Y/N):" << endl;//<< endl;
+      cout << "#> ";
+      cin >> year_yn;
+      while(year_yn != "Y" && year_yn != "N"){
+        cout << "Is a certain color desired? Please enter Y or N as capital letters:" << endl;//<< endl;
+        cout << "#> ";
+        cin >> year_yn;
+      }
+      //cout << "year_yn: " << year_yn << endl;
+      if(year_yn == "Y"){
+        cout << "List the desired year of the car:" << endl;//<< endl;
+        cout << "#> ";
+        cin >> year;
+        //cout << "year: " << year << endl;
+        cout << "Rank the importance of year from 0 to 5, with 5 being most important:" << endl;//<< endl;
+        cout << "#> ";
+        cin >> year_importance;
+        while(year_importance != "0" && year_importance !="1" && year_importance !="2" && year_importance !="3" && year_importance !="4"&& year_importance !="5"){
+          cout << "Please enter the importance as a number between 0 and 5:" << endl;//<< endl;
+          cout << "#> ";
+          cin >> year_importance;
+        }
+        //cout << "year_importance: " << year_importance << endl;
+      }
+      if(redo == 0){
+        state = 5;
+      }
+      else{
+        option = 1;
+      }
+    }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    if(state == 5 && option == 0){
+      cout << "Is it necessary for the rental to be two_way? (Enter Y/N):" << endl;//<< endl;
+      cout << "#> ";
+      cin >> two_way_yn;
+      while(two_way_yn != "Y" && two_way_yn != "N"){
+        cout << "Is a certain color desired? Please enter Y or N as capital letters:" << endl;//<< endl;
+        cout << "#> ";
+        cin >> two_way_yn;
+      }
+      //cout << "two_way_yn: " << two_way_yn << endl;
+      option = 1;
+    }
+
+
+    cout << "You have selected: " << endl;
+    if(make_yn == "Y"){
+      cout << "Make and Model: " << make << endl;
+    }
+    else{
+      cout << "Make and Model: No Selection" << endl;
+    }
+    if(color_yn == "Y"){
+      cout << "Color: " << color << endl;
+    }
+    else{
+      cout << "Color: No Selection" << endl;
+    }
+    if(price_yn == "Y"){
+      cout << "Price: " << price << endl;
+    }
+    else{
+      cout << "Price: No Selection" << endl;
+    }
+    if(year_yn == "Y"){
+      cout << "Year: " << year << endl;
+    }
+    else{
+      cout << "Year: No Selection" << endl;
+    }
+    cout << "Two-Way Drop-off: " << two_way_yn << endl;
+
+    cout << endl;
+    cout << "Is this correct? (Y/N)" << endl;
+    string final_yn;
+    cout << "#> ";
+    cin >> final_yn;
+    while(final_yn != "Y" && final_yn != "N"){
+      cout << "Please enter Y or N as capital letters:" << endl;//<< endl;
+      cout << "#> ";
+      cin >> final_yn;
+    }
+    if(final_yn == "N"){
+      option = 0;
+      redo = 1;
+      cout << endl;
+      cout << "Please select which item you'd like to change: " << endl;
+      cout << "Make and Model (Enter: 1)" << endl;
+      cout << "Color (Enter: 2)" << endl;
+      cout << "Price (Enter: 3)" << endl;
+      cout << "Year (Enter: 4)" << endl;
+      cout << "Two-Way Dropoff (Enter: 5)" << endl;
+      cout << "#> ";
+      cin >> state_sel;
+      while(state_sel != "1" && state_sel != "2" && state_sel != "3" && state_sel != "4" && state_sel != "5"){
+        cout << "Please enter a number between 1 and 5:" << endl;//<< endl;
+        cout << "#> ";
+        cin >> state_sel;
+      }
+      state = stoi(state_sel);
+    }
+  }
 
   int make_weight;
   int color_weight;
