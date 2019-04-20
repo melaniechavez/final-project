@@ -107,7 +107,14 @@ int main(int argc, char* argv[]) {
     cout<< i+1 << ". " << arr[i].make << ", "<< arr[i].weight <<", $"<< arr[i].price<<endl;
   }
 
-  //cq.writeCSV();
+
+  ofstream outFile;
+  outFile.open ("Results.txt");
+  outFile << "Ranked Results\n";
+  for(int i=0; i<list_length; i++){
+    outFile << i+1 << ". " << arr[i].make << ", "<< arr[i].color << ", "<< arr[i].year <<", $"<< arr[i].price<<endl;
+  }
+  outFile.close();
 
   return 0;
 }
