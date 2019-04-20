@@ -162,7 +162,7 @@ void CarList::weighting_function(){
     }
     else{
 
-      int fulfilled[4] = {1,1,1,1};
+      float fulfilled[4] = {1,1,1,1};
 
       if(tmp->make != make && make_yn == "Y"){
         fulfilled[0] = 1;
@@ -179,20 +179,23 @@ void CarList::weighting_function(){
       if(price_yn == "N"){
         fulfilled[2] = 5;
       }
-      else if(tmp->price > (stof(price)+5)){
-        fulfilled[2] = 1;
+      else if(tmp->price+15 < stof(price)){
+        fulfilled[2] = 5/(0.1*(stof(price)-tmp->price)+1);
+      }
+      else if(tmp->price > stof(price)){
+        fulfilled[2] = 5/(0.1*(tmp->price-stof(price))+1);
       }
       else{
-        fulfilled[2] = 5;
+        fulfilled[2] = 5*(0.1*(stof(price)-tmp->price)+1);
       }
       if(year_yn == "N"){
         fulfilled[3] = 5;
       }
-      else if(tmp->year < stoi(year)){
-        fulfilled[3] = 1;
+      else if(tmp->year > stoi(year)){
+        fulfilled[3] = 5/(0.1*(tmp->year-stoi(year))+1);
       }
       else{
-        fulfilled[3] = 5;
+        fulfilled[3] = 5*(0.1*(stoi(year)-tmp->year)+1);
       }
 
       // calculate the weights for each criterion with an inner product of the importance of that criterion and whether what is
@@ -313,19 +316,20 @@ void RentalCarQueue::repairDownward(int i)
   }
 }
 
-void RentalCarQueue::dequeue() // extractMin
+CarNode RentalCarQueue::dequeue() // extractMin
 {
     if(currentQueueSize <= 0){
       cout << "Heap empty, cannot dequeue" << endl;
     }
     if(currentQueueSize == 1){
       currentQueueSize--;
+      return priorityQueue[0];
     }
-    else{
-      priorityQueue[0] = priorityQueue[currentQueueSize-1];
-      currentQueueSize--;
-      repairDownward(0);
-    }
+    CarNode temp = priorityQueue[0];
+    priorityQueue[0] = priorityQueue[currentQueueSize-1];
+    currentQueueSize--;
+    repairDownward(0);
+    return temp;
 }
 
 void swap(CarNode &x, CarNode &y)
@@ -336,19 +340,17 @@ void swap(CarNode &x, CarNode &y)
 }
 
 void RentalCarQueue::printQueue() {
-  for(int i = 0; i<maxQueueSize; i++){
-    cout << priorityQueue[i].make << ", " << priorityQueue[i].weight << endl;
+  cout << "Printing Queue" << endl;
+  for(int i = 0; i<currentQueueSize; i++){
+    cout << priorityQueue[i].make << ", " << priorityQueue[i].weight << ", " << priorityQueue[i].price << endl;
   }
 }
 
-// float* RentalCarQueue::heapSort(CarNode arr[]){
-//   CarNode arr[currentQueueSize];
-//   RentalCarQueue hp(currentQueueSize);
-//   for(int i=0; i<currentQueueSize; i++){
-//     hp.enqueue(arr[i]);
-//   }
-//   for(int i=0; i<currentQueueSize; i++){
-//     arr[i] = hp.dequeue();
-//   }
-//   return arr;
-// }
+
+CarNode* RentalCarQueue::return_arr(){
+  return priorityQueue;
+}
+
+int RentalCarQueue::return_len(){
+  return currentQueueSize;
+}
