@@ -104,7 +104,7 @@ int main(int argc, char* argv[]) {
 
   cout << "Sorted List" << endl;
   for(int i=0; i<list_length; i++){
-    cout<< i+1 << ". " << arr[i].make << ", "<< arr[i].weight <<", $"<< arr[i].price<<endl;
+    cout<< i+1 << ". " << arr[i].make << ", "<< arr[i].color  << ", "<< arr[i].year <<", $"<< arr[i].price<<endl;
   }
 
 
