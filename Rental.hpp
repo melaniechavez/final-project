@@ -58,7 +58,13 @@ class RentalCarQueue
     // return: true if queue is empty, false otherwise
     bool isEmpty();
     //
-    void dequeue();
+    CarNode dequeue();
+
+    //CarNode* heapSort();
+
+    CarNode* return_arr();
+
+    int return_len();
 
     private:
     //Purpose: maintain heap properties by swapping node with parent if necessary
@@ -73,4 +79,3 @@ class RentalCarQueue
     int currentQueueSize; //number of group currently in the priority queue
     int maxQueueSize; //maximum capacity of priority queue
 };
-
