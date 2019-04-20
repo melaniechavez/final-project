@@ -67,7 +67,6 @@ int main(int argc, char* argv[]) {
     length++;
     temp = temp->next;
   }
-  cout << "length of list: " << length << endl;
 
   l.weighting_function();
 
@@ -97,6 +96,7 @@ int main(int argc, char* argv[]) {
   }
 
   cq.printQueue();
+  cout << endl;
 
   int list_length = cq.return_len();
   CarNode* arr = cq.return_arr();
@@ -104,7 +104,7 @@ int main(int argc, char* argv[]) {
 
   cout << "Sorted List" << endl;
   for(int i=0; i<list_length; i++){
-    cout<< arr[i].make << ", "<< arr[i].weight <<", "<< arr[i].price<<endl;
+    cout<< i+1 << ". " << arr[i].make << ", "<< arr[i].weight <<", $"<< arr[i].price<<endl;
   }
 
   //cq.writeCSV();
