@@ -5,6 +5,18 @@
 #include <string>
 using namespace std;
 
+
+CarNode* heapSort(int len, CarNode arr[]){
+  RentalCarQueue hp(len);
+  for(int i=0; i<len; i++){
+    hp.enqueue(arr[i]);
+  }
+  for(int i=0; i<len; i++){
+    arr[i] = hp.dequeue();
+  }
+  return arr;
+}
+
 int main(int argc, char* argv[]) {
 
   string filename = argv[1];
@@ -72,8 +84,11 @@ int main(int argc, char* argv[]) {
     temp = temp->next;
   }
 
+  lreject.printList();
+
   temp = l.getHead();
-  RentalCarQueue cq(length);
+  cout << temp->weight << endl;
+  RentalCarQueue cq(length-reject_count);
   while(temp != nullptr){
     if(temp->weight != -1){
       cq.enqueue(*temp);
@@ -82,6 +97,15 @@ int main(int argc, char* argv[]) {
   }
 
   cq.printQueue();
+
+  int list_length = cq.return_len();
+  CarNode* arr = cq.return_arr();
+  arr = heapSort(list_length,arr);
+
+  cout << "Sorted List" << endl;
+  for(int i=0; i<list_length; i++){
+    cout<< arr[i].make << ", "<< arr[i].weight <<", "<< arr[i].price<<endl;
+  }
 
   //cq.writeCSV();
 
