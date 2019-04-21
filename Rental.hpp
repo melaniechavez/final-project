@@ -79,3 +79,4 @@ class RentalCarQueue
     int currentQueueSize; //number of group currently in the priority queue
     int maxQueueSize; //maximum capacity of priority queue
 };
+
