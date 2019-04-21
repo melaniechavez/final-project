@@ -244,7 +244,7 @@ void CarList::weighting_function(){
       cout << "Color: No Selection" << endl;
     }
     if(price_yn == "Y"){
-      cout << "Price: " << price << endl;
+      cout << "Price: $" << price << endl;
     }
     else{
       cout << "Price: No Selection" << endl;
@@ -312,25 +312,25 @@ void CarList::weighting_function(){
         fulfilled[0] = 1;
       }
       else{
-        fulfilled[0] = 5;
+        fulfilled[0] = 6;
       }
       if(tmp->color != color && color_yn == "Y"){
         fulfilled[1] = 1;
       }
       else{
-        fulfilled[1] = 5;
+        fulfilled[1] = 6;
       }
       if(price_yn == "N"){
         fulfilled[2] = 5;
       }
       else if(tmp->price+15 < stof(price)){
-        fulfilled[2] = 5/(0.1*(stof(price)-tmp->price)+1);
+        fulfilled[2] = 4/(0.1*(stof(price)-tmp->price)+1);
       }
       else if(tmp->price > stof(price)){
-        fulfilled[2] = 5/(0.1*(tmp->price-stof(price))+1);
+        fulfilled[2] = 4/(0.1*(tmp->price-stof(price))+1);
       }
       else{
-        fulfilled[2] = 5*(0.1*(stof(price)-tmp->price)+1);
+        fulfilled[2] = 4*(0.1*(stof(price)-tmp->price)+1);
       }
       if(year_yn == "N"){
         fulfilled[3] = 5;
