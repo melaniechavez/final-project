@@ -59,7 +59,6 @@ int main(int argc, char* argv[]) {
   // close inStream when the file is read, or if it failed to open
   myFile.close();
 
-  l.printList();
 
   int length = 0;
   CarNode* temp = l.getHead();
@@ -70,7 +69,6 @@ int main(int argc, char* argv[]) {
 
   l.weighting_function();
 
-  l.printList();
 
   CarList lreject;
   int reject_count = 0;
@@ -83,10 +81,7 @@ int main(int argc, char* argv[]) {
     temp = temp->next;
   }
 
-  lreject.printList();
-
   temp = l.getHead();
-  cout << temp->weight << endl;
   RentalCarQueue cq(length-reject_count);
   while(temp != nullptr){
     if(temp->weight != -1){
@@ -94,9 +89,6 @@ int main(int argc, char* argv[]) {
     }
     temp = temp->next;
   }
-
-  cq.printQueue();
-  cout << endl;
 
   int list_length = cq.return_len();
   CarNode* arr = cq.return_arr();
@@ -111,7 +103,14 @@ int main(int argc, char* argv[]) {
   ofstream outFile;
   outFile.open ("Results.txt");
   outFile << "Ranked Results\n";
-  for(int i=0; i<list_length; i++){
+  outFile << endl;
+  outFile << "Top 5 Options"<< endl;
+  for(int i=0; i<5; i++){
+    outFile << i+1 << ". " << arr[i].make << ", "<< arr[i].color << ", "<< arr[i].year <<", $"<< arr[i].price<<endl;
+  }
+  outFile << endl;
+  outFile << "Other Ranked Options" << endl;
+  for(int i=5; i<list_length; i++){
     outFile << i+1 << ". " << arr[i].make << ", "<< arr[i].color << ", "<< arr[i].year <<", $"<< arr[i].price<<endl;
   }
   outFile.close();
