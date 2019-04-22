@@ -96,7 +96,7 @@ int main(int argc, char* argv[]) {
 
   cout << "Sorted List" << endl;
   for(int i=0; i<list_length; i++){
-    cout<< i+1 << ". " << arr[i].make << ", "<< arr[i].color  << ", "<< arr[i].year <<", $"<< arr[i].price<<endl;
+    cout<< i+1 << ". " << arr[i].make << ","<< arr[i].color  << ", "<< arr[i].year <<", $"<< arr[i].price<<endl;
   }
 
 
@@ -106,12 +106,12 @@ int main(int argc, char* argv[]) {
   outFile << endl;
   outFile << "Top 5 Options"<< endl;
   for(int i=0; i<5; i++){
-    outFile << i+1 << ". " << arr[i].make << ", "<< arr[i].color << ", "<< arr[i].year <<", $"<< arr[i].price<<endl;
+    outFile << i+1 << ". " << arr[i].make << ","<< arr[i].color << ", "<< arr[i].year <<", $"<< arr[i].price<<endl;
   }
   outFile << endl;
   outFile << "Other Ranked Options" << endl;
   for(int i=5; i<list_length; i++){
-    outFile << i+1 << ". " << arr[i].make << ", "<< arr[i].color << ", "<< arr[i].year <<", $"<< arr[i].price<<endl;
+    outFile << i+1 << ". " << arr[i].make << ","<< arr[i].color << ", "<< arr[i].year <<", $"<< arr[i].price<<endl;
   }
   outFile.close();
 
