@@ -99,7 +99,8 @@ int main(int argc, char* argv[]) {
     cout<< i+1 << ". " << arr[i].make << ","<< arr[i].color  << ", "<< arr[i].year <<", $"<< arr[i].price<<endl;
   }
 
-
+  // After the user's preference, we write their information into a separate txt file.
+  
   ofstream outFile;
   outFile.open ("Results.txt");
   outFile << "Ranked Results\n";
